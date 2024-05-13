@@ -57,8 +57,6 @@ import coil.request.ImageRequest
 import com.google.firebase.Firebase
 import com.google.firebase.firestore.firestore
 import net.ezra.R
-import net.ezra.navigation.ROUTE_HOME
-import net.ezra.navigation.ROUTE_SEARCH
 
 
 data class YourDataClass(
@@ -115,9 +113,7 @@ fun Search(navController: NavHostController) {
                 },
                 navigationIcon = {
                     IconButton(onClick = {
-                        navController.navigate(ROUTE_HOME) {
-                            popUpTo(ROUTE_SEARCH) { inclusive = true }
-                        }
+                        navController.popBackStack()
                     }) {
                         Icon(
                             Icons.AutoMirrored.Filled.KeyboardArrowLeft,

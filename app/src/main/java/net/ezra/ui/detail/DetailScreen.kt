@@ -53,7 +53,6 @@ import coil.compose.rememberAsyncImagePainter
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.coroutines.tasks.await
 import net.ezra.R
-import net.ezra.navigation.ROUTE_ALLEVENTS
 import net.ezra.ui.categories.Product
 
 
@@ -84,7 +83,7 @@ fun EventDetailScreen(navController: NavController, productId: String) {
                 },
                 navigationIcon = {
                     IconButton(onClick = {
-                        navController.navigate(ROUTE_ALLEVENTS)
+                        navController.popBackStack()
                     }) {
                         Icon(
                             Icons.AutoMirrored.Filled.KeyboardArrowLeft,

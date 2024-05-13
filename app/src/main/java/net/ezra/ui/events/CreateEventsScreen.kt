@@ -85,7 +85,6 @@ import com.google.firebase.firestore.firestore
 import com.google.firebase.storage.FirebaseStorage
 import net.ezra.R
 import net.ezra.navigation.ROUTE_CREATE
-import net.ezra.navigation.ROUTE_DETAIL
 import net.ezra.navigation.ROUTE_HOME
 import net.ezra.navigation.ROUTE_SEARCH
 import net.ezra.navigation.ROUTE_SETTINGS
@@ -120,9 +119,7 @@ fun CreateEventScreen(navController: NavHostController) {
                 },
                 navigationIcon = {
                     IconButton(onClick = {
-                        navController.navigate(ROUTE_HOME){
-                            popUpTo(ROUTE_DETAIL) { inclusive = true }
-                        }
+                        navController.popBackStack()
                     }) {
                         Icon(
                             Icons.Filled.KeyboardArrowLeft, "",

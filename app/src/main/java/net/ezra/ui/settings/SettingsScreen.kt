@@ -22,18 +22,16 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ExitToApp
 import androidx.compose.material.icons.filled.KeyboardArrowLeft
-import androidx.compose.material.icons.filled.MoreVert
 import androidx.compose.material.icons.filled.Share
-import androidx.compose.material.icons.outlined.Delete
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.CenterAlignedTopAppBar
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
-import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarColors
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -53,9 +51,7 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import net.ezra.R
-import net.ezra.navigation.ROUTE_HOME
 import net.ezra.navigation.ROUTE_LOGIN
-import net.ezra.navigation.ROUTE_SETTINGS
 
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
@@ -68,7 +64,7 @@ fun SettingsScreen(navController: NavHostController) {
 
     Scaffold(
         topBar = {
-            TopAppBar(
+            CenterAlignedTopAppBar(
                 title = {
                     Column(
                         horizontalAlignment = Alignment.CenterHorizontally,
@@ -86,20 +82,14 @@ fun SettingsScreen(navController: NavHostController) {
                 },
                 navigationIcon = {
                     IconButton(onClick = {
-                        navController.navigate(ROUTE_HOME) {
-                            popUpTo(ROUTE_SETTINGS) { inclusive = true }
-                        }
+                        navController.popBackStack()
                     }) {
                         Icon(
                             Icons.Filled.KeyboardArrowLeft, "",
                         )
                     }
                 },
-                actions = {
-                    IconButton(onClick = {}) {
-                        Icon(Icons.Filled.MoreVert, contentDescription = "")
-                    }
-                },
+
 
                 colors = TopAppBarColors(
                     containerColor = Color.Transparent,
@@ -186,30 +176,6 @@ fun SettingsScreen(navController: NavHostController) {
                             }
 
 
-                            Row(
-                                modifier = Modifier
-                                    .padding(10.dp)
-                            ) {
-
-                                Icon(
-                                    painter = painterResource(id = R.drawable.mail),
-                                    contentDescription = "",
-                                    modifier = Modifier
-                                        .size(25.dp),
-                                    tint = Color.Gray
-                                )
-
-                                Spacer(modifier = Modifier.width(10.dp))
-
-                                Text(text = "Email Support",
-                                    color = Color.LightGray,
-                                    fontSize = 18.sp,
-                                    fontFamily = FontFamily.Serif,
-                                    modifier = Modifier
-                                        .fillMaxWidth()
-                                        .clickable { })
-
-                            }
 
                             Spacer(modifier = Modifier.height(10.dp))
 
@@ -217,7 +183,7 @@ fun SettingsScreen(navController: NavHostController) {
                                 Modifier
                                     .fillMaxSize()
                                     .background(Color.Gray)
-                                    .padding(0.19.dp)
+                                    .padding(0.2.dp)
                             ) {
 
                             }
@@ -276,7 +242,7 @@ fun SettingsScreen(navController: NavHostController) {
                                 Modifier
                                     .fillMaxSize()
                                     .background(Color.Gray)
-                                    .padding(0.5.dp)
+                                    .padding(0.2.dp)
                             ) {
 
                             }
@@ -315,41 +281,41 @@ fun SettingsScreen(navController: NavHostController) {
 
 
 
-                                Row(
-                                    modifier = Modifier
-                                        .padding(10.dp)
-                                ) {
-
-
-                                    Icon(
-                                        imageVector = Icons.Outlined.Delete, contentDescription = "",
-                                        modifier = Modifier
-                                            .size(25.dp),
-                                        tint = Color.Gray
-                                    )
-
-                                    Spacer(modifier = Modifier.width(10.dp))
-
-                                    Text(text = "Request Account Deletion",
-                                        color = Color.LightGray,
-                                        fontSize = 18.sp,
-                                        fontFamily = FontFamily.Serif,
-                                        modifier = Modifier
-                                            .fillMaxWidth()
-                                            .clickable { })
-
-                                }
-
-                            Spacer(modifier = Modifier.height(10.dp))
-
-                                Column(
-                                    Modifier
-                                        .fillMaxSize()
-                                        .background(Color.Gray)
-                                        .padding(0.5.dp)
-                                ) {
-
-                                }
+//                                Row(
+//                                    modifier = Modifier
+//                                        .padding(10.dp)
+//                                ) {
+//
+//
+//                                    Icon(
+//                                        imageVector = Icons.Outlined.Delete, contentDescription = "",
+//                                        modifier = Modifier
+//                                            .size(25.dp),
+//                                        tint = Color.Gray
+//                                    )
+//
+//                                    Spacer(modifier = Modifier.width(10.dp))
+//
+//                                    Text(text = "Request Account Deletion",
+//                                        color = Color.LightGray,
+//                                        fontSize = 18.sp,
+//                                        fontFamily = FontFamily.Serif,
+//                                        modifier = Modifier
+//                                            .fillMaxWidth()
+//                                            .clickable { })
+//
+//                                }
+//
+//                            Spacer(modifier = Modifier.height(10.dp))
+//
+//                                Column(
+//                                    Modifier
+//                                        .fillMaxSize()
+//                                        .background(Color.Gray)
+//                                        .padding(0.5.dp)
+//                                ) {
+//
+//                                }
 
 
 
@@ -357,7 +323,7 @@ fun SettingsScreen(navController: NavHostController) {
 
                         }
 
-                        Spacer(modifier = Modifier.height(35.dp))
+
 
                         Column {
                             Row(
@@ -380,6 +346,15 @@ fun SettingsScreen(navController: NavHostController) {
                                     fontSize = 18.sp,
                                     fontFamily = FontFamily.Serif
                                 )
+                            }
+
+                            Column(
+                                Modifier
+                                    .fillMaxSize()
+                                    .background(Color.Gray)
+                                    .padding(0.2.dp)
+                            ) {
+
                             }
 
                             // Logout confirmation dialog
