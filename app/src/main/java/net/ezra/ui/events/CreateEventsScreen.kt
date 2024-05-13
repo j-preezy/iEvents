@@ -126,13 +126,24 @@ fun CreateEventScreen(navController: NavHostController) {
                         )
                     }
                 },
+                actions = {
+                    IconButton(onClick = {
+                    }) {
+                        Icon(
+                            Icons.Filled.KeyboardArrowLeft, "",
+                        )
+                    }
+                },
 
                 colors = TopAppBarDefaults.centerAlignedTopAppBarColors(
                     containerColor = Color.White,
                     scrolledContainerColor = Color.Transparent,
                     titleContentColor = Color.Black,
-                    navigationIconContentColor = Color.Black
-                )
+                    navigationIconContentColor = Color.Black,
+                    actionIconContentColor = Color.Transparent
+                ),
+
+                scrollBehavior = TopAppBarDefaults.exitUntilCollapsedScrollBehavior()
 
             )
         },
@@ -710,6 +721,7 @@ fun CreateEventScreen(navController: NavHostController) {
                                                     endtime = ""
                                                     location = ""
                                                     category = ""
+                                                    photoUri = null
                                                     // If you're using state variables, make sure to update them to trigger recomposition.
                                                     // For example:
                                                     // eventTitleState = mutableStateOf("")

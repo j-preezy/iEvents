@@ -15,7 +15,6 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.lazy.grid.items
@@ -98,7 +97,6 @@ fun AllEventsScreen(navController: NavController, products: List<Product>) {
                 title = {
                     Text(
                         text = "All Events",
-                        fontSize = 30.sp,
                         fontFamily = FontFamily.Serif
                     )
                 },
@@ -109,7 +107,6 @@ fun AllEventsScreen(navController: NavController, products: List<Product>) {
                         Icon(
                             Icons.AutoMirrored.Filled.KeyboardArrowLeft,
                             "backIcon",
-                            Modifier.size(40.dp)
                         )
                     }
                 },
@@ -195,7 +192,7 @@ fun AllEventsScreen(navController: NavController, products: List<Product>) {
                                 onClick = { displayedProductCount += 1 },
                                 modifier = Modifier.align(Alignment.CenterHorizontally)
                             ) {
-                                Text(text = "Load More")
+                                Text(text = "Load More", color = Color.LightGray, fontFamily = FontFamily.Serif)
                             }
                         }
                     }

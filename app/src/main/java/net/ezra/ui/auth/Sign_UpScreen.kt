@@ -4,7 +4,6 @@ import android.widget.Toast
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
@@ -80,7 +79,7 @@ fun Sign_UpScreen(navController: NavController, onSignUpSuccess: () -> Unit) {
             .fillMaxSize()
             .padding(20.dp)
             .background(Color(0xFF2A2A2A))
-            .clip(RoundedCornerShape(20.dp)),
+            .clip(RoundedCornerShape(30.dp)),
 
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
@@ -123,13 +122,29 @@ fun Sign_UpScreen(navController: NavController, onSignUpSuccess: () -> Unit) {
             modifier = Modifier
         )
 
+        Spacer(modifier = Modifier.height(50.dp))
+
+        Column (
+            horizontalAlignment = Alignment.CenterHorizontally
+        ) {
+            Image(
+                painter = painterResource(id = R.drawable.mylogo1),
+                contentDescription = "",
+                modifier = Modifier
+                    .clip(RoundedCornerShape(10.dp))
+
+
+            )
+        }
+
+        Spacer(modifier = Modifier.height(50.dp))
+
         Column(
 
             modifier = Modifier
                 .fillMaxSize(),
 
             horizontalAlignment = Alignment.CenterHorizontally,
-            verticalArrangement = Arrangement.Center
         ) {
 
 

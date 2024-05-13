@@ -1,5 +1,6 @@
 package net.ezra.navigation
 
+import SplashScreen
 import androidx.activity.compose.BackHandler
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -7,7 +8,6 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import net.ezra.ui.SplashScreen
 import net.ezra.ui.auth.Log_InScreen
 import net.ezra.ui.auth.PasswordReset
 import net.ezra.ui.auth.Sign_UpScreen
@@ -22,8 +22,7 @@ import net.ezra.ui.categories.MusicEvents
 import net.ezra.ui.categories.ReligiousEvents
 import net.ezra.ui.detail.EventDetailScreen
 import net.ezra.ui.events.CreateEventScreen
-import net.ezra.ui.homepage.HomeScreen
-import net.ezra.ui.popularevents.PopularEventsScreen
+import net.ezra.ui.home.HomeScreen
 import net.ezra.ui.register.RegisterScreen
 import net.ezra.ui.search.Search
 import net.ezra.ui.settings.SettingsScreen
@@ -74,7 +73,7 @@ fun AppNavHost(
 
 
         composable(ROUTE_SETTINGS) {
-            SettingsScreen(navController)
+            SettingsScreen(navController = navController)
         }
 
         composable(ROUTE_SEARCH) {
@@ -130,11 +129,6 @@ fun AppNavHost(
         }
 
 
-
-        composable(ROUTE_POPULAREVENTS) {
-            PopularEventsScreen(navController)
-        }
-
         composable(ROUTE_REGISTER) {
             RegisterScreen(navController)
         }
@@ -146,6 +140,9 @@ fun AppNavHost(
         }
 
 
+
+
+
         composable(ROUTE_SPLASH) {
             SplashScreen(navController)
         }
@@ -153,13 +150,6 @@ fun AppNavHost(
 
 
 
-
-
-
-
-//        composable(ROUTE_VIEW_PROD) {
-//            ProductListScreen(navController = navController, products = listOf() )
-//        }
 
 
 

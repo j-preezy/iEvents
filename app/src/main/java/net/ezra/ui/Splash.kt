@@ -1,9 +1,4 @@
-package net.ezra.ui
 
-
-import android.content.res.Configuration
-import android.view.animation.OvershootInterpolator
-import androidx.compose.animation.core.tween
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
@@ -19,14 +14,13 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
-import androidx.navigation.compose.rememberNavController
+import com.google.firebase.auth.FirebaseAuth
 import kotlinx.coroutines.delay
 import net.ezra.R
-import net.ezra.navigation.ROUTE_REGISTER
-
+import net.ezra.navigation.ROUTE_HOME
+import net.ezra.navigation.ROUTE_LOGIN
 
 @Composable
 fun SplashScreen(navController: NavHostController) {
@@ -40,18 +34,28 @@ fun SplashScreen(navController: NavHostController) {
         scale.animateTo(
             targetValue = 0.7f,
             // tween Animation
-            animationSpec = tween(
+            animationSpec = androidx.compose.animation.core.tween(
                 durationMillis = 800,
                 easing = {
-                    OvershootInterpolator(4f).getInterpolation(it)
+                    android.view.animation.OvershootInterpolator(4f).getInterpolation(it)
                 }))
         // Customize the delay time
         delay(3000L)
-        navController.navigate(ROUTE_REGISTER)
+
+        // Check if the user is already signed in
+        val currentUser = FirebaseAuth.getInstance().currentUser
+        if (currentUser != null) {
+            // User is signed in
+            // Navigate to the appropriate screen for authenticated users
+            navController.navigate(ROUTE_HOME)
+        } else {
+            // User is not signed in
+            // Navigate to the login screen
+            navController.navigate(ROUTE_LOGIN)
+        }
     }
 
     // Image
-
     Column (
         modifier = Modifier
             .fillMaxSize()
@@ -59,29 +63,12 @@ fun SplashScreen(navController: NavHostController) {
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ){
-
         Image(painter = painterResource(id = R.drawable.mylogo1),
             contentDescription = "Logo",
             modifier = Modifier
                 .border(0.5.dp, Color.Black, RoundedCornerShape(10.dp)),
-            contentScale = ContentScale.FillBounds
+            contentScale = ContentScale.FillBounds,
+
         )
-
-//        Text("iEvents")
-
-
-
     }
-
-
-
-
 }
-
-
-@Preview(showBackground = true, uiMode = Configuration.UI_MODE_NIGHT_NO)
-@Composable
-fun HomeScreenPreviewLight() {
-    SplashScreen(rememberNavController())
-}
-

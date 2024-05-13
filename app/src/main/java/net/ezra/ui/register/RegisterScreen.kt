@@ -9,6 +9,7 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
@@ -19,7 +20,6 @@ import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonColors
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Icon
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -30,7 +30,6 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -38,7 +37,6 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import net.ezra.R
-import net.ezra.navigation.ROUTE_HOME
 import net.ezra.navigation.ROUTE_LOGIN
 import net.ezra.navigation.ROUTE_REGISTER
 import net.ezra.navigation.ROUTE_SIGNUP
@@ -62,6 +60,8 @@ fun RegisterScreen(navController: NavHostController) {
                 .fillMaxSize()
 
         ){
+            
+            Spacer(modifier = Modifier.height(25.dp))
 
 
             Text(text = "Discover Amazing Events In Your City",
@@ -69,7 +69,7 @@ fun RegisterScreen(navController: NavHostController) {
                 fontStyle = FontStyle.Normal,
                 fontFamily = FontFamily.Serif,
                 fontWeight = FontWeight.Light,
-                fontSize = 42.sp,
+                fontSize = 45.sp,
 
                 modifier = Modifier
                     .padding(15.dp))
@@ -94,20 +94,6 @@ fun RegisterScreen(navController: NavHostController) {
             modifier = Modifier
                 .fillMaxSize()
         ) {
-
-
-            Text(
-                modifier = Modifier
-
-                    .clickable {
-                        navController.navigate(ROUTE_HOME) {
-                            popUpTo(ROUTE_REGISTER) { inclusive = true }
-                        }
-                    },
-                text = "Home",
-                textAlign = TextAlign.Center,
-                color = MaterialTheme.colorScheme.inversePrimary
-            )
 
 
             Button(onClick = {

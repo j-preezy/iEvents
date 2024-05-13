@@ -9,7 +9,6 @@ import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.lazy.grid.items
@@ -72,8 +71,8 @@ fun ReligiousEvents(navController: NavController) {
                 title = {
                     Text(
                         text = "Religious",
-                        fontSize = 30.sp,
-                        fontFamily = FontFamily.Serif
+                        fontFamily = FontFamily.Serif,
+                        fontSize = 20.sp
                     )
                 },
                 navigationIcon = {
@@ -83,7 +82,6 @@ fun ReligiousEvents(navController: NavController) {
                         Icon(
                             Icons.AutoMirrored.Filled.KeyboardArrowLeft,
                             "backIcon",
-                            Modifier.size(40.dp)
                         )
                     }
                 },
@@ -170,7 +168,7 @@ fun ReligiousEvents(navController: NavController) {
                                 onClick = { displayedReligiousCount += 1 },
                                 modifier = Modifier.align(Alignment.CenterHorizontally)
                             ) {
-                                Text(text = "Load More")
+                                Text(text = "Load More", color = Color.LightGray, fontFamily = FontFamily.Serif)
                             }
                         }
                     }

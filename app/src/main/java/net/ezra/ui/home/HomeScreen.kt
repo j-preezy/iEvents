@@ -1,5 +1,7 @@
-package net.ezra.ui.homepage
+package net.ezra.ui.home
 
+//noinspection UsingMaterialAndMaterial3Libraries
+//noinspection UsingMaterialAndMaterial3Libraries
 import android.annotation.SuppressLint
 import android.content.res.Configuration
 import androidx.compose.foundation.Image
@@ -23,10 +25,10 @@ import androidx.compose.material.BottomNavigation
 import androidx.compose.material.BottomNavigationItem
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
-import androidx.compose.material3.CenterAlignedTopAppBar
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Scaffold
+import androidx.compose.material3.SmallTopAppBar
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
@@ -68,7 +70,7 @@ fun HomeScreen(navController: NavHostController) {
 
     Scaffold(
         topBar = {
-            CenterAlignedTopAppBar(
+            SmallTopAppBar(
                 title = {
                     Column(
                         horizontalAlignment = Alignment.CenterHorizontally,
@@ -83,24 +85,11 @@ fun HomeScreen(navController: NavHostController) {
 
                     }
                 },
-//                navigationIcon = {
-//                    IconButton(onClick = {}) {
-//                        Icon(Icons.Filled.Menu, "",
-//                        )
-//                    }
-//                },
-//                actions = {
-//                    IconButton(onClick = {}) {
-//                        Icon(Icons.Outlined.Notifications, contentDescription = "" )
-//                    }
-//                },
 
-                colors = TopAppBarDefaults.centerAlignedTopAppBarColors(
+                colors = TopAppBarDefaults.smallTopAppBarColors(
                     containerColor = Color.Transparent,
-                    scrolledContainerColor = Color.White,
-//                    navigationIconContentColor = Color.Transparent,
                     titleContentColor = Color.Gray,
-//                    actionIconContentColor = Color.Transparent
+
                 ),
 
 
@@ -151,18 +140,18 @@ fun HomeScreen(navController: NavHostController) {
 
                             Text(text = "Plan Your Best Event",
                                 color = Color.White,
-                                fontSize = 38.sp,
+                                fontSize = 40.sp,
                                 fontFamily = FontFamily.Serif)
 
                             Text(text = "Explore the Best Events Around You.",
                                 color = Color.White,
-                                fontSize = 20.sp,
+                                fontSize = 22.sp,
                                 fontWeight = FontWeight.Bold,
                                 fontFamily = FontFamily.Serif)
 
                         }
 
-                        Spacer(modifier = Modifier.height(20.dp))
+                        Spacer(modifier = Modifier.height(15.dp))
 
                         Column (
                             modifier = Modifier
@@ -194,7 +183,7 @@ fun HomeScreen(navController: NavHostController) {
                                             }
                                     )
 
-                                    Spacer(modifier = Modifier.width(25.dp))
+                                    Spacer(modifier = Modifier.width(20.dp))
 
                                     Text(text = "Business",
                                         color = Color.White,
@@ -207,7 +196,7 @@ fun HomeScreen(navController: NavHostController) {
                                             }
                                     )
 
-                                    Spacer(modifier = Modifier.width(25.dp))
+                                    Spacer(modifier = Modifier.width(20.dp))
 
                                     Text(text = "Charity",
                                         color = Color.White,
@@ -220,34 +209,7 @@ fun HomeScreen(navController: NavHostController) {
                                             }
                                     )
 
-                                    Spacer(modifier = Modifier.width(25.dp))
-
-                                    Text(text = "Music",
-                                        color = Color.White,
-                                        fontWeight = FontWeight.Bold,
-                                        fontFamily = FontFamily.Serif,
-
-                                        modifier = Modifier
-                                            .clickable {
-                                                navController.navigate(ROUTE_MUSIC)
-                                            }
-                                    )
-
-                                    Spacer(modifier = Modifier.width(25.dp))
-
-                                    Text(text = "Games",
-                                        color = Color.White,
-                                        fontWeight = FontWeight.Bold,
-                                        fontFamily = FontFamily.Serif,
-
-                                        modifier = Modifier
-                                            .clickable {
-                                                navController.navigate(ROUTE_GAMES)
-                                            }
-                                    )
-
-
-                                    Spacer(modifier = Modifier.width(25.dp))
+                                    Spacer(modifier = Modifier.width(20.dp))
 
                                     Text(text = "Cultural",
                                         color = Color.White,
@@ -260,7 +222,7 @@ fun HomeScreen(navController: NavHostController) {
                                             }
                                     )
 
-                                    Spacer(modifier = Modifier.width(25.dp))
+                                    Spacer(modifier = Modifier.width(20.dp))
 
                                     Text(text = "Educational",
                                         color = Color.White,
@@ -275,7 +237,37 @@ fun HomeScreen(navController: NavHostController) {
 
 
 
-                                    Spacer(modifier = Modifier.width(25.dp))
+                                    Spacer(modifier = Modifier.width(20.dp))
+
+                                    Text(text = "Games",
+                                        color = Color.White,
+                                        fontWeight = FontWeight.Bold,
+                                        fontFamily = FontFamily.Serif,
+
+                                        modifier = Modifier
+                                            .clickable {
+                                                navController.navigate(ROUTE_GAMES)
+                                            }
+                                    )
+
+
+                                    Spacer(modifier = Modifier.width(20.dp))
+
+                                    Text(text = "Music",
+                                        color = Color.White,
+                                        fontWeight = FontWeight.Bold,
+                                        fontFamily = FontFamily.Serif,
+
+                                        modifier = Modifier
+                                            .clickable {
+                                                navController.navigate(ROUTE_MUSIC)
+                                            }
+                                    )
+
+                                    Spacer(modifier = Modifier.width(20.dp))
+
+                                    
+                                    
 
                                     Text(text = "Religious",
                                         color = Color.White,
@@ -287,15 +279,7 @@ fun HomeScreen(navController: NavHostController) {
                                                 navController.navigate(ROUTE_RELIGIOUS)
                                             }
                                     )
-
-
-
-
-
-
-
-
-
+                                    
                                 }
 
                             }
@@ -304,40 +288,33 @@ fun HomeScreen(navController: NavHostController) {
 
                         }
 
-                        Spacer(modifier = Modifier.height(20.dp))
 
-//
-                        
+                        Spacer(modifier = Modifier.height(120.dp))
+
                         Column (
                             modifier = Modifier
                                 .fillMaxWidth()
                                 .padding(10.dp),
                             horizontalAlignment = Alignment.CenterHorizontally
                         ) {
-                            
-                            Row (
-                                Modifier.fillMaxWidth(),
-                                horizontalArrangement = Arrangement.Center
-                            ) {
-                                Text(text = "Check Out Events",
-                                    color = Color.LightGray,
-                                    fontSize = 30.sp,
-                                    fontFamily = FontFamily.Serif)
-                            }
 
                             Row (
-                                Modifier.fillMaxWidth(),
-                                horizontalArrangement = Arrangement.Center
+                                Modifier.fillMaxWidth()
+                                    .padding(start = 30.dp, end = 30.dp),
+                                horizontalArrangement = Arrangement.Center,
+                                verticalAlignment = Alignment.CenterVertically
                             ) {
-                                Text(text = "Available Near You!",
+                                Text(text = "Click the button below to view all events",
                                     color = Color.LightGray,
                                     fontSize = 30.sp,
-                                    fontFamily = FontFamily.Serif)
+                                    fontFamily = FontFamily.Serif,
+                                    textAlign = TextAlign.Center)
                             }
+                            
 
                         }
-
-                        Spacer(modifier = Modifier.height(100.dp))
+                        
+                        Spacer(modifier = Modifier.height(25.dp))
 
                         Column (
                             Modifier.fillMaxSize(),

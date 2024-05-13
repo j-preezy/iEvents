@@ -4,7 +4,6 @@ import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
@@ -77,7 +76,7 @@ fun Log_InScreen(navController: NavHostController, onLoginSuccess: () -> Unit) {
             .fillMaxSize()
             .padding(20.dp)
             .background(Color(0xFF2A2A2A))
-            .clip(RoundedCornerShape(20.dp)),
+            .clip(RoundedCornerShape(30.dp)),
 
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
@@ -109,10 +108,26 @@ fun Log_InScreen(navController: NavHostController, onLoginSuccess: () -> Unit) {
             modifier = Modifier
         )
 
+        Spacer(modifier = Modifier.height(50.dp))
+
+        Column (
+            horizontalAlignment = Alignment.CenterHorizontally
+        ) {
+            Image(
+                painter = painterResource(id = R.drawable.mylogo1),
+                contentDescription = "",
+                modifier = Modifier
+                    .clip(RoundedCornerShape(10.dp))
+
+
+            )
+        }
+
+        Spacer(modifier = Modifier.height(50.dp))
+
         Column(
             modifier = Modifier.fillMaxSize(),
             horizontalAlignment = Alignment.CenterHorizontally,
-            verticalArrangement = Arrangement.Center
         ) {
             OutlinedTextField(
                 value = email,
@@ -176,9 +191,10 @@ fun Log_InScreen(navController: NavHostController, onLoginSuccess: () -> Unit) {
                         } else {
                             "Show password"
                         },
-                        modifier = Modifier.clickable {
-                            passwordVisible = !passwordVisible
-                        }
+                        modifier = Modifier
+                            .clickable {
+                                passwordVisible = !passwordVisible
+                            }
                             .size(20.dp),
                         colorFilter = ColorFilter.tint(Color.White)
                     )
@@ -250,7 +266,8 @@ fun Log_InScreen(navController: NavHostController, onLoginSuccess: () -> Unit) {
                         }
 
                     },
-                    modifier = Modifier.fillMaxWidth()
+                    modifier = Modifier
+                        .fillMaxWidth()
                         .padding(30.dp, 0.dp, 30.dp, 0.dp)
                         .shadow(20.dp, RoundedCornerShape(10.dp))
                         .size(40.dp,)

@@ -50,6 +50,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
+import com.google.firebase.auth.FirebaseAuth
 import net.ezra.R
 import net.ezra.navigation.ROUTE_LOGIN
 
@@ -90,14 +91,25 @@ fun SettingsScreen(navController: NavHostController) {
                     }
                 },
 
+                actions = {
+                    IconButton(onClick = {
+
+                    }) {
+                        Icon(
+                            Icons.Filled.KeyboardArrowLeft, "",
+                        )
+                    }
+                },
+
 
                 colors = TopAppBarColors(
-                    containerColor = Color.Transparent,
+                    containerColor = Color.White,
                     scrolledContainerColor = Color.Gray,
-                    navigationIconContentColor = Color.LightGray,
-                    titleContentColor = Color.Gray,
+                    navigationIconContentColor = Color.DarkGray,
+                    titleContentColor = Color.DarkGray,
                     actionIconContentColor = Color.Transparent
-                )
+                ),
+
 
             )
         },
@@ -280,47 +292,6 @@ fun SettingsScreen(navController: NavHostController) {
                             ) {
 
 
-
-//                                Row(
-//                                    modifier = Modifier
-//                                        .padding(10.dp)
-//                                ) {
-//
-//
-//                                    Icon(
-//                                        imageVector = Icons.Outlined.Delete, contentDescription = "",
-//                                        modifier = Modifier
-//                                            .size(25.dp),
-//                                        tint = Color.Gray
-//                                    )
-//
-//                                    Spacer(modifier = Modifier.width(10.dp))
-//
-//                                    Text(text = "Request Account Deletion",
-//                                        color = Color.LightGray,
-//                                        fontSize = 18.sp,
-//                                        fontFamily = FontFamily.Serif,
-//                                        modifier = Modifier
-//                                            .fillMaxWidth()
-//                                            .clickable { })
-//
-//                                }
-//
-//                            Spacer(modifier = Modifier.height(10.dp))
-//
-//                                Column(
-//                                    Modifier
-//                                        .fillMaxSize()
-//                                        .background(Color.Gray)
-//                                        .padding(0.5.dp)
-//                                ) {
-//
-//                                }
-
-
-
-
-
                         }
 
 
@@ -374,9 +345,12 @@ fun SettingsScreen(navController: NavHostController) {
                                     confirmButton = {
                                         Button(
                                             onClick = {
-                                                // Perform logout action and navigate to login screen
-                                                logoutAndNavigateToLogin(navController)
+//                                                // Perform logout action and navigate to login screen
+//                                                logoutAndNavigateToLogin(navController)
                                                 showLogoutConfirmationDialog = false
+                                                FirebaseAuth.getInstance().signOut()
+                                                // Navigate to the login screen
+                                                navController.navigate(ROUTE_LOGIN)
                                             },
                                             colors = ButtonDefaults.buttonColors(
                                                 containerColor = Color.White,
