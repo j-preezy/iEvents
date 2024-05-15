@@ -211,7 +211,7 @@ fun EventDetailScreen(navController: NavController, productId: String) {
 
                         Column(
                             modifier = Modifier
-                                .fillMaxWidth()
+                                .fillMaxSize()
                                 .padding(top = 10.dp),
                             horizontalAlignment = Alignment.CenterHorizontally,
                             verticalArrangement = Arrangement.Bottom
@@ -219,7 +219,7 @@ fun EventDetailScreen(navController: NavController, productId: String) {
 
                             Card(
                                 modifier = Modifier
-                                    .fillMaxWidth(),
+                                    .fillMaxSize(),
                             ) {
 
                                 Row(
@@ -337,8 +337,8 @@ suspend fun fetchProduct(productId: String): Product? {
             val productData = documentSnapshot.data ?: return null
             Product(
                 id = productId,
-                eventtitle = productData["eventtitle"] as String, // Assuming the field in Firestore is "eventtitle"
-                imageUrl = productData["imageUrl"] as String, // Assuming the field in Firestore is "imageUrl"
+                eventtitle = productData["eventtitle"] as String,
+                imageUrl = productData["imageUrl"] as String,
                 description = productData["description"] as String,
                 date = productData["date"] as String,
                 starttime = productData["starttime"] as String,

@@ -15,6 +15,7 @@ import android.app.DatePickerDialog
 import android.app.TimePickerDialog
 import android.content.res.Configuration
 import android.net.Uri
+import android.widget.Toast
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.PickVisualMediaRequest
 import androidx.activity.result.contract.ActivityResultContracts
@@ -253,7 +254,7 @@ fun CreateEventScreen(navController: NavHostController) {
                                     verticalAlignment = Alignment.CenterVertically
                                 ){
 
-                                    val categories = listOf("Art", "Music", "Games", "Cultural", "Educational", "Charity", "Religious", "Business")
+                                    val categories = listOf("Art", "Business", "Charity", "Cultural", "Educational", "Games", "Music",  "Religious", )
                                     var selectedCategory by remember { mutableStateOf<String?>(null) }
 
                                     DropdownTextField(
@@ -517,17 +518,32 @@ fun CreateEventScreen(navController: NavHostController) {
 
                                         IconButton(
                                             onClick = {
-                                                // Display dialog with TimePicker
+                                                // Get the current time
                                                 val calendar = Calendar.getInstance()
+                                                val currentHour = calendar.get(Calendar.HOUR_OF_DAY)
+                                                val currentMinute = calendar.get(Calendar.MINUTE)
+
                                                 val timePickerDialog = TimePickerDialog(
                                                     context,
                                                     { _, hourOfDay, minute ->
-                                                        // Format the selected time
-                                                        val selectedTime = String.format("%02d:%02d", hourOfDay, minute)
-                                                        starttime = selectedTime
+                                                        // Create a calendar instance for the selected time
+                                                        val selectedTimeCalendar = Calendar.getInstance().apply {
+                                                            set(Calendar.HOUR_OF_DAY, hourOfDay)
+                                                            set(Calendar.MINUTE, minute)
+                                                        }
+
+                                                        // Compare the selected time with the current time
+                                                        if (selectedTimeCalendar.timeInMillis >= calendar.timeInMillis) {
+                                                            // Format the selected time
+                                                            val selectedTime = String.format("%02d:%02d", hourOfDay, minute)
+                                                            starttime = selectedTime
+                                                        } else {
+                                                            // Show a message if the selected time is in the past
+                                                            Toast.makeText(context, "Selected time is in the past. Please select a valid time.", Toast.LENGTH_SHORT).show()
+                                                        }
                                                     },
-                                                    calendar.get(Calendar.HOUR_OF_DAY),
-                                                    calendar.get(Calendar.MINUTE),
+                                                    currentHour,
+                                                    currentMinute,
                                                     true // 24-hour format
                                                 )
 
@@ -536,7 +552,13 @@ fun CreateEventScreen(navController: NavHostController) {
                                         ) {
                                             Image(painter = painterResource(id = R.drawable.clock), contentDescription = "Select Time", modifier = Modifier.size(18.dp))
                                         }
+
+                                        // Display the selected time
+                                        if (starttime.isNotEmpty()) {
+                                            Text("Selected time: $starttime")
+                                        }
                                     }
+
 
                                     Spacer(modifier = Modifier.width(10.dp))
 
@@ -577,15 +599,30 @@ fun CreateEventScreen(navController: NavHostController) {
                                             onClick = {
                                                 // Display dialog with TimePicker
                                                 val calendar = Calendar.getInstance()
+                                                val currentHour = calendar.get(Calendar.HOUR_OF_DAY)
+                                                val currentMinute = calendar.get(Calendar.MINUTE)
+
                                                 val timePickerDialog = TimePickerDialog(
                                                     context,
                                                     { _, hourOfDay, minute ->
-                                                        // Format the selected time
-                                                        val selectedTime = String.format("%02d:%02d", hourOfDay, minute)
-                                                        endtime = selectedTime
+                                                        // Create a calendar instance for the selected time
+                                                        val selectedTimeCalendar = Calendar.getInstance().apply {
+                                                            set(Calendar.HOUR_OF_DAY, hourOfDay)
+                                                            set(Calendar.MINUTE, minute)
+                                                        }
+
+                                                        // Compare the selected time with the current time
+                                                        if (selectedTimeCalendar.timeInMillis >= calendar.timeInMillis) {
+                                                            // Format the selected time
+                                                            val selectedTime = String.format("%02d:%02d", hourOfDay, minute)
+                                                            endtime = selectedTime
+                                                        } else {
+                                                            // Show a message if the selected time is in the past
+                                                            Toast.makeText(context, "Selected time is in the past. Please select a valid time.", Toast.LENGTH_SHORT).show()
+                                                        }
                                                     },
-                                                    calendar.get(Calendar.HOUR_OF_DAY),
-                                                    calendar.get(Calendar.MINUTE),
+                                                    currentHour,
+                                                    currentMinute,
                                                     true // 24-hour format
                                                 )
 
@@ -667,7 +704,8 @@ fun CreateEventScreen(navController: NavHostController) {
                                                 containerColor = Color.LightGray
                                             )
                                         ) {
-                                            Text("Add Image")
+                                            Text("Add Image",
+                                                fontFamily = FontFamily.Serif)
                                         }
 
                                         if (photoUri != null) {

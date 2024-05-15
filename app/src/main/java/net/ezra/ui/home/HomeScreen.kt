@@ -5,6 +5,7 @@ package net.ezra.ui.home
 import android.annotation.SuppressLint
 import android.content.res.Configuration
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
@@ -153,6 +154,16 @@ fun HomeScreen(navController: NavHostController) {
 
                         Spacer(modifier = Modifier.height(15.dp))
 
+                        Column(
+                            Modifier
+                                .fillMaxSize()
+                                .background(Color.Gray)
+                                .padding(0.2.dp)
+                        ) {
+
+                        }
+
+
                         Column (
                             modifier = Modifier
                                 .fillMaxSize()
@@ -288,6 +299,18 @@ fun HomeScreen(navController: NavHostController) {
 
                         }
 
+                        Spacer(modifier = Modifier.height(20.dp))
+
+
+                        Column(
+                            Modifier
+                                .fillMaxSize()
+                                .background(Color.Gray)
+                                .padding(0.2.dp)
+                        ) {
+
+                        }
+
 
                         Spacer(modifier = Modifier.height(120.dp))
 
@@ -299,7 +322,8 @@ fun HomeScreen(navController: NavHostController) {
                         ) {
 
                             Row (
-                                Modifier.fillMaxWidth()
+                                Modifier
+                                    .fillMaxWidth()
                                     .padding(start = 30.dp, end = 30.dp),
                                 horizontalArrangement = Arrangement.Center,
                                 verticalAlignment = Alignment.CenterVertically

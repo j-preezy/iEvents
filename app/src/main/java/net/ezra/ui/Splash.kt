@@ -20,7 +20,7 @@ import com.google.firebase.auth.FirebaseAuth
 import kotlinx.coroutines.delay
 import net.ezra.R
 import net.ezra.navigation.ROUTE_HOME
-import net.ezra.navigation.ROUTE_LOGIN
+import net.ezra.navigation.ROUTE_REGISTER
 
 @Composable
 fun SplashScreen(navController: NavHostController) {
@@ -51,7 +51,7 @@ fun SplashScreen(navController: NavHostController) {
         } else {
             // User is not signed in
             // Navigate to the login screen
-            navController.navigate(ROUTE_LOGIN)
+            navController.navigate(ROUTE_REGISTER)
         }
     }
 
