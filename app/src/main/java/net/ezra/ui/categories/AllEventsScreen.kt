@@ -97,7 +97,8 @@ fun AllEventsScreen(navController: NavController, products: List<Product>) {
                 title = {
                     Text(
                         text = "All Events",
-                        fontFamily = FontFamily.Serif
+                        fontFamily = FontFamily.Serif,
+                        fontSize = 20.sp
                     )
                 },
                 navigationIcon = {
@@ -115,7 +116,9 @@ fun AllEventsScreen(navController: NavController, products: List<Product>) {
                     scrolledContainerColor = Color.DarkGray,
                     navigationIconContentColor = Color.Black,
                     titleContentColor = Color.Gray,
-                )
+                ),
+
+
             )
         }
         ,

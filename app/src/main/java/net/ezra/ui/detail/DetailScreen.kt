@@ -160,9 +160,15 @@ fun EventDetailScreen(navController: NavController, productId: String) {
                                     Modifier
                                         .fillMaxWidth()
                                         .padding(start = 10.dp, end = 10.dp, top = 5.dp),
-                                    horizontalArrangement = Arrangement.End
-
+                                    horizontalArrangement = Arrangement.Absolute.SpaceBetween
                                 ) {
+
+                                    product?.location?.let { Text(text = it,
+                                        color = Color.Black,
+                                        fontFamily = FontFamily.Serif,
+                                        fontSize = 20.sp) }
+
+
 
                                     product?.date?.let { Text(text = it,
                                         color = Color.Black,

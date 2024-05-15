@@ -159,7 +159,7 @@ fun Log_InScreen(navController: NavHostController, onLoginSuccess: () -> Unit) {
 
             Spacer(modifier = Modifier.height(10.dp))
 
-            // Inside the Column for password field
+
             var passwordVisible by remember { mutableStateOf(false) }
 
             OutlinedTextField(
@@ -182,9 +182,9 @@ fun Log_InScreen(navController: NavHostController, onLoginSuccess: () -> Unit) {
                 trailingIcon = {
                     Image(
                         painter = if (passwordVisible) {
-                            painterResource(R.drawable.view) // Replace with your image resource
+                            painterResource(R.drawable.view)
                         } else {
-                            painterResource(R.drawable.hidden) // Replace with your image resource
+                            painterResource(R.drawable.hidden)
                         },
                         contentDescription = if (passwordVisible) {
                             "Hide password"
@@ -221,11 +221,11 @@ fun Log_InScreen(navController: NavHostController, onLoginSuccess: () -> Unit) {
                     text = it,
                     color = Color.Red,
                     fontFamily = FontFamily.Serif,
-                    modifier = Modifier.padding(top = 5.dp)
+                    modifier = Modifier.padding(top = 10.dp)
                 )
             }
 
-            Spacer(modifier = Modifier.height(60.dp))
+            Spacer(modifier = Modifier.height(40.dp))
 
             if (isLoading) {
                 CircularProgressIndicator(modifier = Modifier.size(48.dp), color = Color.White)
